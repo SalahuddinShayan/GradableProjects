@@ -1,12 +1,14 @@
 package phase1;
 
 import java.io.File;
-import java.util.Scanner;
+import java.util.*;
 
 public class VirtualKey {
 	public static void main(String[] args) {
 	Scanner Sc = new Scanner(System.in);
 	System.out.println("Welcome to the Calculator");
+	File folder = new File("C:\\Users\\Alifa\\OneDrive\\Documents\\Practice projects");
+	  File[] listOfFiles = folder.listFiles();
 	int u = 1;
 	while(u==1) {
 		System.out.println("Please select the oppration you want to perform"+"\r\n" 
@@ -15,8 +17,7 @@ public class VirtualKey {
 			+ "0.Exit." );
 		int c = Sc.nextInt();
 	  if(c==1) {
-		  File folder = new File("C:\\Users\\Alifa\\OneDrive\\Documents\\Practice projects");
-		  File[] listOfFiles = folder.listFiles();
+		  Arrays.sort(listOfFiles);
 		  for (int i = 0; i < listOfFiles.length; i++) {
 		  System.out.println(listOfFiles[i].getName());
 	  }}
@@ -35,6 +36,20 @@ public class VirtualKey {
 					
 				}
 				else if(a==3) {
+					System.out.println("Please, give the file name that you want to find with right extention: ");
+					String x = Sc.nextLine();
+					String filename= Sc.nextLine();
+					System.out.println(filename);
+					for (int i = 0; i < listOfFiles.length; i++) {
+						String str = listOfFiles[i].getName();
+						if (str.equals(filename)) {
+							System.out.println("Your file has been found.");
+							break;
+						}
+						else if (i==listOfFiles.length-1) {
+							System.out.println("Your file not found. Please, make sure you entered correct file name with the right extention.");
+						}
+					}
 					
 				}
 				else if(a==0) {
